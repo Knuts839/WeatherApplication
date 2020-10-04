@@ -52,7 +52,7 @@ weatherHtmlDiv
             function displayWeatherInfo() {
 
                 var weather = $(this).attr("data-name");
-                var queryURL = " api.openweathermap.org/data/2.5/weather?q=" + weather + ",&APPID=0e37982ab1c96322580e2789811a9f01";
+                var queryURL = " api.openweathermap.org/data/2.5/weather?q=" + weather + ",us&APPID=0e37982ab1c96322580e2789811a9f01";
 
                 // Creating an AJAX call for the specific weather button being clicked
                 $.ajax({
