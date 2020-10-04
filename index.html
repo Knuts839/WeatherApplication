@@ -14,6 +14,15 @@
     </style>
 </head>
 
+<!-- Variables being used
+Var weatherReports
+
+Local variables
+var weather
+var queryURL
+weatherHtmlDiv
+-->
+
 <body>
 
     <div class="container">
@@ -27,7 +36,7 @@
             <input type="text" id="weather-input">
             <br>
 
-            <!-- Button triggers new movie to be added -->
+            <!-- Button triggers new weather btn to be added -->
             <input id="add-weather" type="submit" value="Check your weather">
         </form>
 
@@ -39,11 +48,11 @@
             // Initial array of weather areas
             var weatherReports = ["Minneapolis", "St.Paul", "Maple Grove"];
 
-            // displayResponserInfo function re-renders the HTML to display the appropriate content
+            // displayWeatherResponserInfo function re-renders the HTML to display the weather
             function displayWeatherInfo() {
 
                 var weather = $(this).attr("data-name");
-                var queryURL = " api.openweathermap.org=" + weatherReports + "0e37982ab1c96322580e2789811a9f01";
+                var queryURL = " api.openweathermap.org=" + weather + "0e37982ab1c96322580e2789811a9f01";
 
                 // Creating an AJAX call for the specific weather button being clicked
                 $.ajax({
@@ -55,7 +64,7 @@
                     var weatherHtmlDiv = $("<div class='weather'>");
 
                     // Storing the weather data
-                    var weatherReports = response.weather;
+                    var weather = response.weather;
 
                     // Creating an element to have the weather displayed
                     var weather1 = $("<p>").text("Weather: " + weather1);
@@ -96,14 +105,14 @@
 
             }
 
-            // Function for displaying movie data
+            // Function for displaying weather data
             function renderButtons() {
 
-                // Deleting the movies prior to adding new movies
+                // Deleting the movies prior to adding weather btns
                 // (this is necessary otherwise you will have repeat buttons)
                 $("#buttons-view").empty();
 
-                // Looping through the array of movies
+                // Looping through the array of weatherReports
                 for (var i = 0; i < weatherReports.length; i++) {
 
                     // Then dynamicaly generating buttons for each movie in the array
@@ -120,13 +129,13 @@
                 }
             }
 
-            // This function handles events where a movie button is clicked
+            // This function handles events where weather button is clicked
             $("#add-weather").on("click", function(event) {
                 event.preventDefault();
                 // This line grabs the input from the textbox
                 var weather = $("#Weather-input").val().trim();
 
-                // Adding movie from the textbox to our array
+                // Adding weather report from the textbox to our array
                 weatherReports.push(weather);
 
                 // Calling renderButtons which handles the processing of our movie array
