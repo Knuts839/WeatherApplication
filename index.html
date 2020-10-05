@@ -46,7 +46,7 @@ weatherHtmlDiv
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
             // Initial array of weather areas
-            var weatherReports = ["Minneapolis", "St.Paul", "Maple Grove"];
+            var weatherReports = ["Minneapolis", "St. Paul", "Maple Grove"];
 
             // displayWeatherResponserInfo function re-renders the HTML to display the weather
             function displayWeatherInfo() {
@@ -67,40 +67,40 @@ weatherHtmlDiv
                     var weather = response.weather;
 
                     // Creating an element to have the weather displayed
-                    var weather1 = $("<p>").text("Weather: " + weather1);
+                    var pOne = $("<p>").text("Weather: " + JSON.stringify(weather));
 
                     // Displaying the weather
-                    weatherHtmlDiv.append(weather1);
+                    weatherHtmlDiv.append(pOne);
 
                     // Storing the release year
                     var temperature = response.temperature;
 
                     // Creating an element to hold the temperature data
-                    var temperature = response.temperature;
+                    var pTwo = $("<p>").text("temperature: " + temperature);
 
                     // Displaying the release year
-                    weatherHtmlDiv.append(weather2);
+                    weatherHtmlDiv.append(pTwo);
 
                     // Storing the plot
                     var weatherHourly = response.hourly;
 
                     // Creating an element to hold the plot
-                    var weather3 = $("<p>").text("Hourly: " + weather3);
+                    var pThree = $("<p>").text("Hourly: " + "JSON.stringify(weatherHourly)");
 
                     // Appending the plot
-                    weatherHtmlDiv.append(weather3);
+                    weatherHtmlDiv.append(pThree);
 
                     // Retrieving the URL for the image
-                    var imgURL = response.Weather;
+                    // var imgURL = response.Weather;
 
                     // Creating an element to hold the image
-                    var image = $("<img>").attr("src", imgURL);
+                    // var weather3 = $("<p>").text("Weather: " + weather3);
 
                     // Appending the image
-                    weatherHtmlDiv.append(image);
+                    // weatherHtmlDiv.append(weather3);
 
                     // Putting the entire movie above the previous movies
-                    $("#Weather").prepend(weatherHtmlDiv);
+                    $("#weatherReports-view").prepend(weatherHtmlDiv);
                 });
 
             }
@@ -133,7 +133,7 @@ weatherHtmlDiv
             $("#add-weather").on("click", function(event) {
                 event.preventDefault();
                 // This line grabs the input from the textbox
-                var weather = $("#Weather-input").val().trim();
+                var weather = $("#Weather-input").val();
 
                 // Adding weather report from the textbox to our array
                 weatherReports.push(weather);
