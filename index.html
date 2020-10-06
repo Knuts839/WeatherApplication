@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <title>FareWeatherApp</title>
     <style type="text/css">
@@ -154,15 +155,15 @@ weatherHtmlDiv
 
                     // Then dynamicaly generating buttons for each movie in the array
                     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-                    var a = $("<button>");
+                    var myWeatherBtns = $("<button>");
                     // Adding a class of weather-btn to our button
-                    a.addClass("weather-btn");
+                    myWeatherBtns.addClass("weather-btn");
                     // Adding a data-attribute
-                    a.attr("data-name", weatherReports[i]);
+                    myWeatherBtns.attr("data-name", weatherReports[i]);
                     // Providing the initial button text
-                    a.text(weatherReports[i]);
+                    myWeatherBtns.text(weatherReports[i]);
                     // Adding the button to the buttons-view div
-                    $("#buttons-view").append(a);
+                    $("#buttons-view").append(myWeatherBtns);
                 }
             }
 
