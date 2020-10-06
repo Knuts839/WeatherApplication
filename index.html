@@ -51,8 +51,8 @@ weatherHtmlDiv
             // displayWeatherResponserInfo function re-renders the HTML to display the weather
             function displayWeatherInfo() {
 
-                var weather = $(this).attr("data-name");
-                var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + weather + ",us&APPID=30a266c3ef7e5d9f5d759ca4f3166174";
+                var city = $(this).attr("data-name");
+                var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",us&units=imperial&APPID=30a266c3ef7e5d9f5d759ca4f3166174";
 
                 // Creating an AJAX call for the specific weather button being clicked
                 $.ajax({
@@ -64,31 +64,68 @@ weatherHtmlDiv
                     var weatherHtmlDiv = $("<div class='weather'>");
 
                     // Storing the weather data
-                    var weather = response.weather;
+                    // var weather = response.main;
+                    const json = response.main;
+                    // const obj = JSON.parse(json);
+                    var feelslike = json.feels_like;
+                    var temperature = json.temp;
+                    var humidity = json.humidity;
+                    var tempMax = json.temp_max;
+                    var tempMin = json.temp_min;
+
+                    // expected output: 282.55
+
 
                     // Creating an element to have the weather displayed
-                    var pOne = $("<p>").text("Weather: " + JSON.stringify(weather));
+                    var pOne = $("<p>").text("Weather: " + city);
 
                     // Displaying the weather
                     weatherHtmlDiv.append(pOne);
 
-                    // Storing the release year
-                    var temperature = response.temperature;
-
                     // Creating an element to hold the temperature data
-                    var pTwo = $("<p>").text("temperature: " + temperature);
+                    var pTwo = $("<p>").text("Feels like: " + feelslike);
 
                     // Displaying the release year
                     weatherHtmlDiv.append(pTwo);
 
+                    // Creating an element to hold the temperature data
+                    var pThree = $("<p>").text("Temperature: " + temperature);
+
+                    // Displaying the release year
+                    weatherHtmlDiv.append(pThree);
+
+                    // Creating an element to hold the temperature data
+                    var pFour = $("<p>").text("Humidity: " + humidity);
+
+                    // Displaying the release year
+                    weatherHtmlDiv.append(pFour);
+
+                    // Creating an element to hold the temperature data
+                    var pFive = $("<p>").text("Max temperature: " + tempMax);
+
+                    // Displaying the release year
+                    weatherHtmlDiv.append(pFive);
+
+                    // Creating an element to hold the temperature data
+                    var pSix = $("<p>").text("Min temperature: " + tempMin);
+
+                    // Displaying the release year
+                    weatherHtmlDiv.append(pSix);
+
+                    // Creating an element to hold the temperature data
+                    var pSeven = $("<br>");
+
+                    // Displaying the release year
+                    weatherHtmlDiv.append(pSeven);
+
                     // Storing the plot
-                    var weatherHourly = response.hourly;
+                    // var weatherHourly = response.hourly;
 
                     // Creating an element to hold the plot
-                    var pThree = $("<p>").text("Hourly: " + "JSON.stringify(weatherHourly)");
+                    // var pThree = $("<p>").text("Hourly: " + "JSON.stringify(weatherHourly)");
 
                     // Appending the plot
-                    weatherHtmlDiv.append(pThree);
+                    // weatherHtmlDiv.append(pThree);
 
                     // Retrieving the URL for the image
                     // var imgURL = response.Weather;
@@ -133,10 +170,10 @@ weatherHtmlDiv
             $("#add-weather").on("click", function(event) {
                 event.preventDefault();
                 // This line grabs the input from the textbox
-                var weather = $("#Weather-input").val();
+                var checkWeatherBtn = $("#weather-input").val();
 
                 // Adding weather report from the textbox to our array
-                weatherReports.push(weather);
+                weatherReports.push(checkWeatherBtn);
 
                 // Calling renderButtons which handles the processing of our movie array
                 renderButtons();
