@@ -1,1 +1,2 @@
 # WeatherApplication
+My application displays the weather data for the various cities. This data includes: "Feels like Temperature, "Temperature", "Humidity", "Max temperature", and "Min Temperature". You may click one of the existing buttons to get the weather of that city. You can manually enter the name of a city and hit the enter key or manually enter the name of the city and click the "check weather button" to generate a new weather button. All of this data is retrieved through the Open Weather Map api rest service.

@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta charset="utf-8">
-    <title>FareWeatherApp</title>
+    <title>FairWeatherApp</title>
     <style type="text/css">
         button,
         div,
@@ -18,7 +18,7 @@
 <body>
 
     <div class="container">
-        <h1>Fare weather search</h1>
+        <h1>Fair weather search</h1>
 
         <div id="buttons-view"></div>
 
@@ -54,7 +54,7 @@
                     var tempMax = json.temp_max;
                     var tempMin = json.temp_min;
 
-                    var pOne = $("<p>").text("Weather: " + city);
+                    var pOne = $("<p>").text(city + ": Weather");
 
                     weatherHtmlDiv.append(pOne);
 
